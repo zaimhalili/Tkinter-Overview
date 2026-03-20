@@ -20,3 +20,7 @@ Thumbs.db
 *.txt
 dati.csv
 analisi.csv
+
+# Personal
+Presentazione_Personale_GUI.md
+*.md

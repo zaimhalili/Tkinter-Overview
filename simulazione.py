@@ -7,6 +7,29 @@ from random import randint, choice, random as random_float, sample
 from typing import List, Tuple
 
 
+def genera_misurazioni_industriali(quantita: int, minimo: int = -20, massimo: int = 120) -> tuple[list[int], list[str]]:
+    """
+    Genera misurazioni casuali e valida ogni valore con controllo di flusso.
+
+    Stati:
+    - "SOTTO_RANGE" se valore < 0
+    - "OK" se 0 <= valore <= 100
+    - "SOPRA_RANGE" se valore > 100
+    """
+    valori = [randint(minimo, massimo) for _ in range(quantita)]
+    stati: list[str] = []
+
+    for valore in valori:
+        if valore < 0:
+            stati.append("SOTTO_RANGE")
+        elif valore <= 100:
+            stati.append("OK")
+        else:
+            stati.append("SOPRA_RANGE")
+
+    return valori, stati
+
+
 def genera_sequenza_casuale(lunghezza: int, min_val: int = 1, max_val: int = 100) -> List[int]:
     """
     Genera una sequenza di numeri casuali tra min_val e max_val.
